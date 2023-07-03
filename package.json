@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Library and book manager REST API.",
   "main": "src/app.js",
+  "repository": "github:lautaro588/LibraryAPI",
   "scripts": {
     "start": "node src/app.js",
     "start:dev": "nodemon src/app.js",
