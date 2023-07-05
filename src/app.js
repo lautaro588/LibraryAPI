@@ -11,8 +11,14 @@ app.get('/', (req, res) => {
   res.end();
 });
 
-app.get('/library', (req, res) => {
-  res.end();
+app.get('/library', async (req, res) => {
+  try {
+    const allLibraries = await Library.findAll();
+    res.json(allLibraries);
+  } catch (err) {
+    console.error('Error when fetching libraries', err);
+    res.status(500).json({ action: 'Get libraries', error: err.message });
+  }
 });
 
 app.post('/library', async (req, res) => {
