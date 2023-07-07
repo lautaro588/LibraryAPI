@@ -27,4 +27,14 @@ const getLibrary = async (id) => {
     }
 }
 
-module.exports = { createLibrary, getLibraries, getLibrary };
+const updateLibrary = async (id, newValues) => {
+    try {
+        await Library.update(newValues, { where: { id } });
+        return await Library.findByPk(id);
+    } catch (err) {
+        console.error("Error when updating library.", err.message);
+        throw err;
+    }
+}
+
+module.exports = { createLibrary, getLibraries, getLibrary, updateLibrary };

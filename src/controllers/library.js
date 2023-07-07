@@ -27,4 +27,13 @@ const getLibrary = async (req, res) => {
   }
 };
 
-module.exports = { createLibrary, getLibraries, getLibrary };
+const updateLibrary = async (req, res) => {
+  try {
+    const updatedLibrary = await libraryService.updateLibrary(req.params.id, req.body);
+    updatedLibrary ? res.json(updatedLibrary) : res.status(404).end();
+  } catch (err) {
+    res.status(500).json({ action: "Update library", error: err.message });
+  }
+};
+
+module.exports = { createLibrary, getLibraries, getLibrary, updateLibrary };
