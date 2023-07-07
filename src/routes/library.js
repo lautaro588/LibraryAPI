@@ -7,4 +7,6 @@ router.route('/')
     .get(libraryController.getLibraries)
     .post(libraryController.createLibrary);
 
+router.get('/:id', libraryController.getLibrary);
+
 module.exports = router;

@@ -18,4 +18,13 @@ const getLibraries = async (req, res) => {
     }
 };
 
-module.exports = { createLibrary, getLibraries };
+const getLibrary = async (req, res) => {
+  try {
+    const library = await libraryService.getLibrary(req.params.id);
+    library ? res.json(library) : res.status(404).end();
+  } catch (err) {
+    res.status(500).json({ action: 'Get library', error: err.message });
+  }
+};
+
+module.exports = { createLibrary, getLibraries, getLibrary };

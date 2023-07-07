@@ -18,4 +18,13 @@ const getLibraries = async () => {
     }
 };
 
-module.exports = { createLibrary, getLibraries };
+const getLibrary = async (id) => {
+    try {
+        return await Library.findByPk(id);
+    } catch (err) {
+        console.error("Error when fetching library.", err.message);
+        throw err;
+    }
+}
+
+module.exports = { createLibrary, getLibraries, getLibrary };
