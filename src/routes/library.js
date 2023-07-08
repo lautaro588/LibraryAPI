@@ -9,6 +9,7 @@ router.route('/')
 
 router.route('/:id')
     .get(libraryController.getLibrary)
-    .put(libraryController.updateLibrary);
+    .put(libraryController.updateLibrary)
+    .delete(libraryController.deleteLibrary);
 
 module.exports = router;

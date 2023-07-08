@@ -13,6 +13,8 @@ const Library = sequelize.define('Library', {
   },
   location: DataTypes.STRING,
   telefono: DataTypes.STRING
+}, {
+  paranoid: true
 });
 
 module.exports = Library;

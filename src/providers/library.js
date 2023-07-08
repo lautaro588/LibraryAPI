@@ -37,4 +37,13 @@ const updateLibrary = async (id, newValues) => {
     }
 }
 
-module.exports = { createLibrary, getLibraries, getLibrary, updateLibrary };
+const deleteLibrary = async (id) => {
+    try {
+        return await Library.destroy({ where: { id } });
+    } catch (err) {
+        console.error("Error when deleting library.", err.message);
+        throw err;
+    }
+}
+
+module.exports = { createLibrary, getLibraries, getLibrary, updateLibrary, deleteLibrary };

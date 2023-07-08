@@ -36,4 +36,13 @@ const updateLibrary = async (req, res) => {
   }
 };
 
-module.exports = { createLibrary, getLibraries, getLibrary, updateLibrary };
+const deleteLibrary = async (req, res) => {
+  try {
+    const deleteLibrary = await libraryService.deleteLibrary(req.params.id);
+    deleteLibrary ? res.status(204).end() : res.status(404).end();
+  } catch (err) {
+    res.status(500).json({ action: "Delete library", error: err.message });
+  }
+};
+
+module.exports = { createLibrary, getLibraries, getLibrary, updateLibrary, deleteLibrary };
