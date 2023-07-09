@@ -14,7 +14,12 @@ const Library = sequelize.define('Library', {
   location: DataTypes.STRING,
   telefono: DataTypes.STRING
 }, {
-  paranoid: true
+  paranoid: true,
+  defaultScope: {
+    attributes: {
+      exclude: ['createdAt', 'updatedAt', 'deletedAt']
+    }
+  }
 });
 
 module.exports = Library;
