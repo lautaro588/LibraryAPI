@@ -3,7 +3,15 @@ const { Sequelize } = require("sequelize");
 const sequelize = new Sequelize({
   dialect: "sqlite",
   storage: "./database.sqlite",
-  logging: false
+  logging: false,
+  define: {
+    paranoid: true,
+    defaultScope: {
+      attributes: {
+        exclude: ['createdAt', 'updatedAt', 'deletedAt']
+      }
+    }
+  }
 });
 
 const initializeDB = async () => {

@@ -16,13 +16,6 @@ const Book = sequelize.define('Book', {
   autor: DataTypes.STRING,
   year: DataTypes.STRING,
   library: DataTypes.INTEGER
-}, {
-  paranoid: true,
-  defaultScope: {
-    attributes: {
-      exclude: ['createdAt', 'updatedAt', 'deletedAt']
-    }
-  }
 });
 
 module.exports = Book;
