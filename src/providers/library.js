@@ -2,7 +2,8 @@ const { Library } = require("../models");
 
 const createLibrary = async (library) => {
     try {
-        return await Library.create(library);
+        const newLibrary = await Library.create(library);
+        return await Library.findByPk(newLibrary.id);
     } catch (err) {
         console.error("Error when creating library.", err.message);
         throw err;
