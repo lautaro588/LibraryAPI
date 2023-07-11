@@ -14,8 +14,7 @@ const Book = sequelize.define('Book', {
   },
   titulo: DataTypes.STRING,
   autor: DataTypes.STRING,
-  year: DataTypes.STRING,
-  library: DataTypes.INTEGER
+  year: DataTypes.STRING
 });
 
 module.exports = Book;
