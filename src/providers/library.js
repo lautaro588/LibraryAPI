@@ -1,4 +1,4 @@
-const { Library } = require("../models");
+const { Library, Book } = require("../models");
 
 const createLibrary = async (library) => {
     try {
@@ -47,4 +47,14 @@ const deleteLibrary = async (id) => {
     }
 }
 
-module.exports = { createLibrary, getLibraries, getLibrary, updateLibrary, deleteLibrary };
+const createBook = async (book, libraryId) => {
+    try {
+        const newBook = await Book.create({ ...book, library: libraryId });
+        return await Book.findByPk(newBook.id);
+    } catch (err) {
+        console.error("Error when creating book.", err.message);
+        throw err;
+    }
+}
+
+module.exports = { createLibrary, getLibraries, getLibrary, updateLibrary, deleteLibrary, createBook };

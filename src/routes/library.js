@@ -12,4 +12,6 @@ router.route('/:id')
     .put(libraryController.updateLibrary)
     .delete(libraryController.deleteLibrary);
 
+router.post('/:id/book', libraryController.createBook);
+
 module.exports = router;

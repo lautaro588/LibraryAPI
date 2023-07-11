@@ -45,4 +45,13 @@ const deleteLibrary = async (req, res) => {
   }
 };
 
-module.exports = { createLibrary, getLibraries, getLibrary, updateLibrary, deleteLibrary };
+const createBook = async (req, res) => {
+  try {
+      const newBook = await libraryService.createBook(req.body, req.params.id);
+      newBook ? res.status(201).json(newBook) : res.status(404).end();
+  } catch (err) {
+      res.status(500).json({ action: 'Create book', error: err.message });
+  }
+};
+
+module.exports = { createLibrary, getLibraries, getLibrary, updateLibrary, deleteLibrary, createBook };
