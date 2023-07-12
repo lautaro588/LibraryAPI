@@ -12,7 +12,7 @@ const createLibrary = async (library) => {
 
 const getLibraries = async () => {
     try {
-        return await Library.findAll();
+        return await Library.findAll({ include: 'books' });
     } catch (err) {
         console.error("Error when fetching libraries.", err.message);
         throw err;
@@ -21,7 +21,7 @@ const getLibraries = async () => {
 
 const getLibrary = async (id) => {
     try {
-        return await Library.findByPk(id);
+        return await Library.findByPk(id, { include: 'books' });
     } catch (err) {
         console.error("Error when fetching library.", err.message);
         throw err;
