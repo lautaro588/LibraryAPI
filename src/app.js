@@ -5,7 +5,7 @@ const port = 3000;
 const { initializeDB } = require('./config/db-config');
 const seed = require('./seed');
 
-const { library, book } = require('./routes');
+const { library, book, user } = require('./routes');
 
 app.use(express.json());
 
@@ -15,6 +15,7 @@ app.get('/', (req, res) => {
 
 app.use('/library', library);
 app.use('/book', book);
+app.use('/user', user);
 
 app.listen(port, async () => {
   await initializeDB();
